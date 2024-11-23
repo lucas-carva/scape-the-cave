@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1nen40727g4g"]
+
+[ext_resource type="Script" path="res://scripts/tiro.gd" id="1_lvv3x"]
+[ext_resource type="Texture2D" uid="uid://cbc1025vueb2d" path="res://icon.svg" id="2_5mqd7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_phc4v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5mqd7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4pa2"]
+size = Vector2(128, 128)
+
+[node name="tiro" type="AnimatedSprite2D"]
+position = Vector2(1, -5.72205e-06)
+scale = Vector2(0.101563, 0.0429687)
+sprite_frames = SubResource("SpriteFrames_phc4v")
+script = ExtResource("1_lvv3x")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.863
+one_shot = true
+autostart = true
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(-2.28882e-05, 0)
+shape = SubResource("RectangleShape2D_h4pa2")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
