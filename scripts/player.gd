@@ -4,6 +4,7 @@ var tiro = preload("res://cenas/tiro.tscn")
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var muzzle : Marker2D = $Muzzle
+@export var tiros = 20
 const SPEED = 200.0
 const JUMP_VELOCITY = -320.0
 const RUN_BOOST = 1.4
@@ -59,7 +60,8 @@ func _physics_process(delta: float) -> void:
 #criar funcao e deixar o if chamar a funcao
 	# Verificar se o personagem está atirando
 	var momento_tiro = tiro.instantiate() as Node2D
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") and tiros > 0:
+		tiros -=1
 		momento_tiro.position = muzzle.global_position
 		momento_tiro.direction = direction
 		get_parent().add_child(momento_tiro)

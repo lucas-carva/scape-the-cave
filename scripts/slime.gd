@@ -4,6 +4,7 @@ const grupo_inimigo = "inimigos"
 
 @export var SPEED = 100.0
 @export var direction := -1
+@export var life = 3
 var timer := 0.0  # Para contar o tempo
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -30,7 +31,14 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
-	
+func die():
+	if life <= 0:
+		SPEED = 10
+		$AnimatedSprite2D.play("crushed")
+		await get_tree().create_timer(1.0).timeout	 #PROBLEMA
+		queue_free()
+
+
 '''
 	# Se o temporizador atingir o tempo especificado, alterna a direção
 	if timer >= DIRECTION_TIME:
