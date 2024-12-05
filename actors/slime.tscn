@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://d0lwuaxix3gsc"]
+[gd_scene load_steps=20 format=3 uid="uid://d0lwuaxix3gsc"]
 
 [ext_resource type="Script" path="res://scripts/slime.gd" id="1_yb023"]
 [ext_resource type="Texture2D" uid="uid://dw3hneipb3hsx" path="res://assets/Platformer Slimes v1.3/Gray Slime Spritesheet.png" id="2_gcadx"]
+[ext_resource type="Texture2D" uid="uid://dp3btiuugdi8x" path="res://assets/Platformer Slimes v1.3/Purple Slime Spritesheet.png" id="3_wl7lw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_alcjl"]
 atlas = ExtResource("2_gcadx")
@@ -22,6 +23,14 @@ region = Rect2(96, 32, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_jqxk8"]
 atlas = ExtResource("2_gcadx")
 region = Rect2(112, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mp57j"]
+atlas = ExtResource("3_wl7lw")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fwe0"]
+atlas = ExtResource("3_wl7lw")
+region = Rect2(64, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hgkvc"]
 atlas = ExtResource("2_gcadx")
@@ -75,6 +84,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_mp57j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fwe0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mp57j")
+}],
+"loop": false,
+"name": &"dmg",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_hgkvc")
 }, {
 "duration": 1.0,
@@ -109,9 +132,15 @@ script = ExtResource("1_yb023")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4imrk")
-animation = &"walk"
+animation = &"dmg"
 autoplay = "walk"
+frame = 2
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_gh0ct")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, 4)
+target_position = Vector2(-17, 0)

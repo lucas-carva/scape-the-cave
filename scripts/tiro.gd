@@ -26,6 +26,8 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		var slime = area.get_parent()
 		if slime:
 			slime.life -=1
+			if slime.life > 0:
+				slime.dmg()
 			slime.die()
 		
 	# Remove o próprio objeto que possui o hitbox

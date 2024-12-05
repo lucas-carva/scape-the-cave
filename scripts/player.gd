@@ -13,7 +13,7 @@ var is_dying = false
 var start_position: Vector2  # Posição inicial do personagem
 
 # Enum para os estados de animação
-enum State { IDLE, WALK, RUN, JUMP, DEATH, SHOOT }
+enum State { IDLE, WALK, RUN, JUMP, DEATH, SHOOT, RUN_SHOOT }
 var current_state := State.IDLE
 func _ready() -> void:
 	start_position = position  # Salva a posição inicial do personagem
@@ -21,6 +21,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var current_position = global_position  # Posição local
+	var momento_tiro = tiro.instantiate() as Node2D
 
 	if is_dying:
 		return
@@ -57,9 +58,8 @@ func _physics_process(delta: float) -> void:
 		if is_on_floor() and current_state != State.IDLE:
 			current_state = State.IDLE
 			play_animation()
-#criar funcao e deixar o if chamar a funcao
+
 	# Verificar se o personagem está atirando
-	var momento_tiro = tiro.instantiate() as Node2D
 	if Input.is_action_just_pressed("shoot") and tiros > 0:
 		tiros -=1
 		momento_tiro.position = muzzle.global_position
@@ -67,6 +67,7 @@ func _physics_process(delta: float) -> void:
 		get_parent().add_child(momento_tiro)
 		if current_state != State.SHOOT:
 			current_state = State.SHOOT
+			await get_tree().create_timer(1.0).timeout
 			play_animation()
 			
 	# Flip the character based on direction
@@ -96,7 +97,8 @@ func play_animation():
 			$AnimatedSprite2D.play("death")
 		State.SHOOT:
 			$AnimatedSprite2D.play("shoot")
-
+		State.RUN_SHOOT:
+			$AnimatedSprite2D.play("run_shoot")
 # Função de morte
 func death():
 	is_dying = true

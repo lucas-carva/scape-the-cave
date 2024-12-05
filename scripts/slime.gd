@@ -12,13 +12,17 @@ var tiro = preload("res://cenas/tiro.tscn")
 
 func _physics_process(delta: float) -> void:
 	
+	# Detecta parede com RayCast2D
+	if $RayCast2D.is_colliding():
+		var collider = $RayCast2D.get_collider()
+		
+		# Só vira se não for o jogador
+		if not collider.is_in_group("player"):
+			direction *= -1
+		
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		direction = -direction
-		
-	velocity.x = direction * SPEED
-	
-	timer += delta
 
 	# Aplica a velocidade e o movimento
 	velocity.x = direction * SPEED
@@ -30,7 +34,13 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.flip_h = true
 
 	move_and_slide()
-	
+func dmg():
+	$AnimatedSprite2D.play("dmg")
+	await get_tree().create_timer(0.5).timeout	 #PROBLEMA
+	$AnimatedSprite2D.play("walk")
+
+
+
 func die():
 	if life <= 0:
 		SPEED = 10

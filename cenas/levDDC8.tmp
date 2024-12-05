@@ -2242,7 +2242,6 @@ texture = ExtResource("9_7lmm3")
 [node name="player" type="CharacterBody2D" parent="." groups=["player"]]
 position = Vector2(89, -8)
 script = ExtResource("2_60t4h")
-tiros = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
 position = Vector2(-114.4, 499.6)
