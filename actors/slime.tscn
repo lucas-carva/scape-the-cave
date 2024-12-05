@@ -69,7 +69,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jqxk8")
 }],
-"loop": true,
+"loop": false,
 "name": &"crushed",
 "speed": 5.0
 }, {
@@ -103,7 +103,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_gh0ct"]
 radius = 5.0
 
-[node name="slime" type="CharacterBody2D"]
+[node name="slime" type="CharacterBody2D" groups=["slimes"]]
 position = Vector2(442, 111)
 script = ExtResource("1_yb023")
 
@@ -111,7 +111,6 @@ script = ExtResource("1_yb023")
 sprite_frames = SubResource("SpriteFrames_4imrk")
 animation = &"walk"
 autoplay = "walk"
-frame_progress = 0.680743
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)

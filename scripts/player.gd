@@ -19,8 +19,9 @@ func _ready() -> void:
 	play_animation()
 
 func _physics_process(delta: float) -> void:
+	var current_position = global_position  # Posição local
+
 	if is_dying:
-		print("ta morrendo")
 		return
 	
 	# Add the gravity.
@@ -59,7 +60,7 @@ func _physics_process(delta: float) -> void:
 	# Verificar se o personagem está atirando
 	var momento_tiro = tiro.instantiate() as Node2D
 	if Input.is_action_just_pressed("shoot"):
-		momento_tiro.global_position = muzzle.global_position
+		momento_tiro.position = muzzle.global_position
 		momento_tiro.direction = direction
 		get_parent().add_child(momento_tiro)
 		if current_state != State.SHOOT:
@@ -68,11 +69,11 @@ func _physics_process(delta: float) -> void:
 			
 	# Flip the character based on direction
 	if direction == 1:
-		$AnimatedSprite2D.flip_h = false
-		muzzle.scale.x = 1
+		$AnimatedSprite2D.scale.x = 1.75
+		muzzle.global_position.x = current_position.x - 65
 	elif direction == -1:
-		$AnimatedSprite2D.flip_h = true
-		muzzle.scale.x = -1
+		$AnimatedSprite2D.scale.x = -1.75
+		muzzle.global_position.x = current_position.x - 165
 
 
 	# Move the character
@@ -110,7 +111,9 @@ func death():
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	death()
+	if body.is_in_group("player"):
+		death()
 
 func _on_spikes_body_entered(body: Node2D) -> void:
-	death()
+	if body.is_in_group("player"):
+		death()

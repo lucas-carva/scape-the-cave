@@ -2155,7 +2155,7 @@ radius = 5.90906
 size = Vector2(123.375, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xyhaj"]
-size = Vector2(959, 8)
+size = Vector2(959, 33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rmgls"]
 size = Vector2(107.5, 19)
@@ -2204,16 +2204,15 @@ position = Vector2(366, 330)
 scale = Vector2(1.6, 1.6)
 texture = ExtResource("9_7lmm3")
 
-[node name="player" type="CharacterBody2D" parent="."]
+[node name="player" type="CharacterBody2D" parent="." groups=["player"]]
 script = ExtResource("2_60t4h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
 position = Vector2(-114.4, 499.6)
 scale = Vector2(1.8, 1.8)
 sprite_frames = SubResource("SpriteFrames_t83y5")
-animation = &"shoot"
+animation = &"walk"
 autoplay = "idle"
-frame_progress = 0.578006
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
 position = Vector2(-115, 508)
@@ -2229,18 +2228,17 @@ limit_bottom = -30
 [node name="Muzzle" type="Marker2D" parent="player"]
 position = Vector2(-63, 508)
 
-[node name="slimes" type="Node2D" parent="."]
+[node name="slimes" type="Node2D" parent="." groups=["slimes"]]
 position = Vector2(1572.4, 753.2)
 scale = Vector2(2.2, 2.2)
 
 [node name="slime" parent="slimes" instance=ExtResource("16_brgf2")]
 visibility_layer = 2
 position = Vector2(-177.909, -111)
-DIRECTION_TIME = 2.0
 
-[node name="hitbox" type="Area2D" parent="slimes/slime"]
+[node name="hitbox" type="Area2D" parent="slimes/slime" groups=["slimes"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="slimes/slime/hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="slimes/slime/hitbox" groups=["slimes"]]
 position = Vector2(-5.55515e-05, 2.72727)
 shape = SubResource("CircleShape2D_q7liy")
 debug_color = Color(0.57779, 0.0113659, 0.208697, 0.42)
@@ -2249,11 +2247,10 @@ debug_color = Color(0.57779, 0.0113659, 0.208697, 0.42)
 visibility_layer = 2
 position = Vector2(-428.364, -109.636)
 direction = 1
-DIRECTION_TIME = 2.0
 
-[node name="hitbox" type="Area2D" parent="slimes/slime2"]
+[node name="hitbox" type="Area2D" parent="slimes/slime2" groups=["slimes"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="slimes/slime2/hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="slimes/slime2/hitbox" groups=["slimes"]]
 position = Vector2(-5.55515e-05, 2.72727)
 shape = SubResource("CircleShape2D_q7liy")
 debug_color = Color(0.57779, 0.0113659, 0.208697, 0.42)
@@ -2262,10 +2259,10 @@ debug_color = Color(0.57779, 0.0113659, 0.208697, 0.42)
 light_mask = 4
 
 [node name="moving_platform" parent="platforms" instance=ExtResource("13_cl4da")]
-position = Vector2(1335, 533)
+position = Vector2(1392, 534)
 
 [node name="moving_platform2" parent="platforms" instance=ExtResource("13_cl4da")]
-position = Vector2(1658, 282)
+position = Vector2(1715, 283)
 distance = -250
 move_horizontal = false
 
@@ -2276,12 +2273,16 @@ position = Vector2(901, 593)
 shape = SubResource("RectangleShape2D_hcbn2")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="spikes"]
-position = Vector2(1688, 599)
+position = Vector2(1687, 605)
 shape = SubResource("RectangleShape2D_xyhaj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spikes"]
-position = Vector2(516, 592)
+position = Vector2(540, 597)
 shape = SubResource("RectangleShape2D_rmgls")
+
+[node name="moving_platform" parent="." instance=ExtResource("13_cl4da")]
+position = Vector2(1624, 283)
+distance = -250
 
 [connection signal="body_entered" from="slimes/slime/hitbox" to="player" method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="slimes/slime2/hitbox" to="player" method="_on_hitbox_body_entered"]

@@ -5,7 +5,6 @@ const grupo_inimigo = "inimigos"
 @export var SPEED = 100.0
 @export var direction := -1
 var timer := 0.0  # Para contar o tempo
-@export var DIRECTION_TIME = 3.0  # Tempo para andar em uma direção (em segundos)
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var tiro = preload("res://cenas/tiro.tscn")
