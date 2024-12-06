@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://da8qjsrn6y3nv"]
+
+[ext_resource type="Texture2D" uid="uid://cauemnhau6vfe" path="res://assets/Key Items 16x16/00.png" id="1_q52fx"]
+[ext_resource type="Script" path="res://scripts/key.gd" id="2_agbfb"]
+
+[node name="key" type="Sprite2D"]
+position = Vector2(200, 67)
+texture = ExtResource("1_q52fx")
+script = ExtResource("2_agbfb")

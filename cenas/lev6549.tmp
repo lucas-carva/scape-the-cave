@@ -1,8 +1,8 @@
-[gd_scene load_steps=75 format=3 uid="uid://mcfhg728nb51"]
+[gd_scene load_steps=73 format=3 uid="uid://mcfhg728nb51"]
 
 [ext_resource type="Texture2D" uid="uid://b1adtspf2uehb" path="res://assets/PixelFantasy_Caves_1.0/mainlev_build.png" id="1_xx5s5"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_60t4h"]
-[ext_resource type="Texture2D" uid="uid://cauemnhau6vfe" path="res://assets/Key Items 16x16/00.png" id="2_cvsrt"]
+[ext_resource type="Texture2D" uid="uid://cbc1025vueb2d" path="res://icon.svg" id="2_b3gmt"]
 [ext_resource type="Texture2D" uid="uid://dhexefndi8to" path="res://assets/Cursed_Character_Pack_COMPLETE/Pistol/dmg-p.png" id="3_dtwo4"]
 [ext_resource type="Texture2D" uid="uid://c77edve73nhle" path="res://assets/Cursed_Character_Pack_COMPLETE/Pistol/idle-p.png" id="3_vrckc"]
 [ext_resource type="Texture2D" uid="uid://c671ny71l4t02" path="res://assets/Cursed_Character_Pack_COMPLETE/Pistol/jump-p.png" id="4_e8f3r"]
@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://b4yg6xo5hw12w" path="res://assets/PixelFantasy_Caves_1.0/background1.png" id="12_r75qw"]
 [ext_resource type="PackedScene" uid="uid://cd7bs6uowdsi2" path="res://actors/moving_platform.tscn" id="13_cl4da"]
 [ext_resource type="PackedScene" uid="uid://d0lwuaxix3gsc" path="res://actors/slime.tscn" id="16_brgf2"]
-[ext_resource type="PackedScene" uid="uid://da8qjsrn6y3nv" path="res://cenas/key.tscn" id="18_5sni5"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_u5aes"]
 tile_data = PackedInt32Array(0, 1638400, 11, 65536, 1638400, 12, 1, 1703936, 11, 65537, 1703936, 12, 2, 1572864, 23, 65538, 1572864, 24, 3, 1638400, 23, 65539, 1638400, 24, 4, 1376256, 23, 65540, 1376256, 24, 5, 1441792, 23, 65541, 1441792, 24, 6, 1769472, 23, 65542, 1769472, 24, 7, 1835008, 23, 65543, 1835008, 24, 8, 917504, 23, 65544, 917504, 24, 9, 983040, 23, 65545, 983040, 24, 10, 1245184, 23, 65546, 1245184, 24, 11, 1114112, 23, 65547, 1114112, 24)
@@ -1800,8 +1799,6 @@ sources/0 = SubResource("TileSetAtlasSource_flf7s")
 pattern_0 = SubResource("TileMapPattern_u5aes")
 pattern_1 = SubResource("TileMapPattern_vlwjo")
 
-[sub_resource type="Theme" id="Theme_sltgr"]
-
 [sub_resource type="Theme" id="Theme_58hkt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6sv1s"]
@@ -2193,11 +2190,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-tooltip_text = "
-"
-theme = SubResource("Theme_sltgr")
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
@@ -2206,20 +2200,10 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = SubResource("Theme_58hkt")
-texture = ExtResource("2_cvsrt")
-flip_h = true
-flip_v = true
+texture = ExtResource("2_b3gmt")
 
 [node name="keys_counter" type="Label" parent="HUD/Control/key_container"]
-custom_minimum_size = Vector2(40, 0)
-layout_direction = 1
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "x0
-"
-horizontal_alignment = 2
-text_direction = 2
 
 [node name="BG" type="ParallaxBackground" parent="."]
 
@@ -2288,7 +2272,7 @@ scale = Vector2(2.2, 2.2)
 visibility_layer = 2
 position = Vector2(-177.909, -111)
 
-[node name="hitbox" type="Area2D" parent="slimes/slime" groups=["slimes"]]
+[node name="hitbox" type="Area2D" parent="slimes/slime"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slimes/slime/hitbox"]
 position = Vector2(-5.55515e-05, 2.72727)
@@ -2300,7 +2284,7 @@ visibility_layer = 2
 position = Vector2(-428.364, -109.636)
 direction = 1
 
-[node name="hitbox" type="Area2D" parent="slimes/slime2" groups=["slimes"]]
+[node name="hitbox" type="Area2D" parent="slimes/slime2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slimes/slime2/hitbox"]
 position = Vector2(-5.55515e-05, 2.72727)
@@ -2349,12 +2333,6 @@ shape = SubResource("RectangleShape2D_xyhaj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spikes"]
 position = Vector2(540, 597)
 shape = SubResource("RectangleShape2D_rmgls")
-
-[node name="keys" type="Node2D" parent="."]
-
-[node name="key" parent="keys" instance=ExtResource("18_5sni5")]
-position = Vector2(1100, 210)
-scale = Vector2(1.6, 1.6)
 
 [connection signal="body_entered" from="slimes/slime/hitbox" to="player" method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="slimes/slime2/hitbox" to="player" method="_on_hitbox_body_entered"]

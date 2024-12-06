@@ -22,6 +22,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("slimes"):
+		print("slime")
 		# Acessa o nó pai do 'Area2D' para garantir que o 'slime' seja destruído
 		var slime = area.get_parent()
 		if slime:
@@ -31,4 +32,5 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 			slime.die()
 		
 	# Remove o próprio objeto que possui o hitbox
+	print("area")
 	queue_free()
