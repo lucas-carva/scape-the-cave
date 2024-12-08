@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 func dmg():
 	$AnimatedSprite2D.play("dmg")
-	await get_tree().create_timer(0.5).timeout	 #PROBLEMA
+	await get_tree().create_timer(0.5).timeout	 
 	$AnimatedSprite2D.play("walk")
 
 
@@ -45,7 +45,7 @@ func die():
 	if life <= 0:
 		SPEED = 10
 		$AnimatedSprite2D.play("crushed")
-		await get_tree().create_timer(1.0).timeout	 #PROBLEMA
+		await get_tree().create_timer(1.0).timeout	 
 		queue_free()
 
 

@@ -2,15 +2,14 @@ extends AnimatedSprite2D
 
 var speed : int = 600
 var direction : int
-var last_direction : int = 1
 
 
 func _physics_process(delta: float) -> void:
 	if direction != 0:
-		last_direction = direction
 		move_local_x(direction * speed * delta)
 	else:
-		move_local_x(last_direction * speed * delta)
+		move_local_x(direction * speed * delta)
+
 
 
 func _on_timer_timeout() -> void:

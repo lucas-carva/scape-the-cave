@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var tiro = preload("res://cenas/tiro.tscn")
+var last_direction : int
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var muzzle : Marker2D = $Muzzle
@@ -10,11 +11,14 @@ const JUMP_VELOCITY = -320.0
 const RUN_BOOST = 1.4
 
 var is_dying = false
+var is_shooting = false
+
 var start_position: Vector2  # Posição inicial do personagem
 
 # Enum para os estados de animação
 enum State { IDLE, WALK, RUN, JUMP, DEATH, SHOOT, RUN_SHOOT }
 var current_state := State.IDLE
+
 func _ready() -> void:
 	start_position = position  # Salva a posição inicial do personagem
 	play_animation()
@@ -23,7 +27,7 @@ func _physics_process(delta: float) -> void:
 	var current_position = global_position  # Posição local
 	var momento_tiro = tiro.instantiate() as Node2D
 
-	if is_dying:
+	if is_dying or is_shooting:
 		return
 	
 	# Add the gravity.
@@ -59,16 +63,30 @@ func _physics_process(delta: float) -> void:
 			current_state = State.IDLE
 			play_animation()
 
+	#verificar ultimo lado apontando
+	if direction:
+		last_direction = direction
+		
 	# Verificar se o personagem está atirando
-	if Input.is_action_just_pressed("shoot") and tiros > 0:
-		tiros -=1
+	if Input.is_action_just_pressed("shoot") and tiros > 0 and not is_shooting:
+		tiros -= 1
 		momento_tiro.position = muzzle.global_position
-		momento_tiro.direction = direction
+		momento_tiro.direction = last_direction
 		get_parent().add_child(momento_tiro)
-		if current_state != State.SHOOT:
-			current_state = State.SHOOT
-			await get_tree().create_timer(1.0).timeout
-			play_animation()
+		
+		# Bloquear outros estados enquanto atirando
+		is_shooting = true
+		current_state = State.SHOOT
+		play_animation()
+		
+		# Aguardar a animação terminar e desbloquear
+		await $AnimatedSprite2D.animation_finished
+		is_shooting = false
+		# Voltar ao estado apropriado
+		current_state = State.IDLE if is_on_floor() else State.JUMP
+		play_animation()
+
+
 			
 	# Flip the character based on direction
 	if direction == 1:
@@ -121,3 +139,9 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 func _on_spikes_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		death()
+
+func _on_key_hitbox_body_entered(body: Node2D) -> void:
+	$key.set_vi
+	Global.key = true
+	print("foi")
+	pass # Replace with function body.

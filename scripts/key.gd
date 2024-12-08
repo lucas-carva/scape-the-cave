@@ -10,3 +10,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# Atualiza a posição vertical com uma função senoidal
 	position.y = initial_position.y + sin(Time.get_ticks_msec() / 1000.0 * float_speed) * float_amplitude
+
+
+func _on_key_hitbox_body_entered(body: Node2D) -> void:
+	 # Verifica se o corpo que entrou é o player (ou o grupo certo)
+	if body.is_in_group("player"):  # Certifique-se de que o Player está no grupo "player"
+		Global.key = true  # Define que a chave foi coletada
+		print("Chave coletada!")  # Mensagem no console
+		queue_free()  # Remove o nó da chave
