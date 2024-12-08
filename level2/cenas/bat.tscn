@@ -133,6 +133,7 @@ size = Vector2(13, 5.5)
 position = Vector2(20, 17)
 motion_mode = 1
 script = ExtResource("1_koo4s")
+speed = 75.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 1)

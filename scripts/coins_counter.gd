@@ -1,4 +1,4 @@
-extends Area2D
+extends Label
 
 
 # Called when the node enters the scene tree for the first time.
@@ -8,13 +8,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	text = "" +  str(Global.coins).pad_zeros(2)
 	pass
-
-
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		$anim.play("collected")
-		Global.coins += 1
-
-func _on_anim_animation_finished() -> void:
-	queue_free()

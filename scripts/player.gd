@@ -128,6 +128,7 @@ func play_animation():
 # Função de morte
 func death():
 	is_dying = true
+	velocity.y = 500
 	current_state = State.DEATH
 	play_animation()
 	await get_tree().create_timer(2.0).timeout
@@ -159,7 +160,7 @@ func _on_key_hitbox_body_entered(body: Node2D) -> void:
 
 
 func _on_hitbox_bat_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and body.is_dying == false:
 		Global.life -= 1
 		death()
 	pass # Replace with function body.

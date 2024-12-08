@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://ojmmlqheysg6"]
+[gd_scene load_steps=8 format=3 uid="uid://ojmmlqheysg6"]
 
 [ext_resource type="Texture2D" uid="uid://yge2ymm2m1rs" path="res://assets/images/hearts.png" id="1_7sw1o"]
 [ext_resource type="Texture2D" uid="uid://bqgntiu56rejg" path="res://assets/GunsPack/Bullets/PistolAmmoBig.png" id="1_wv0gm"]
 [ext_resource type="FontFile" uid="uid://dp15nrw256jnd" path="res://fonts/BruceForeverRegular-X3jd2.ttf" id="2_pgrud"]
 [ext_resource type="Script" path="res://scripts/bullet_counter.gd" id="2_qh0uq"]
 [ext_resource type="Script" path="res://scripts/life_counter.gd" id="3_spy4l"]
+[ext_resource type="Texture2D" uid="uid://cp8fejtrfhg66" path="res://level2/assets/coin_image.png" id="6_5dkoc"]
+[ext_resource type="Script" path="res://scripts/coins_counter.gd" id="7_ym4ps"]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -67,3 +69,27 @@ text = " 1
 "
 horizontal_alignment = 2
 script = ExtResource("2_qh0uq")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -53.0
+offset_top = 5.0
+offset_right = 54.0
+offset_bottom = 46.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer3"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+texture = ExtResource("6_5dkoc")
+
+[node name="Label" type="Label" parent="Control/HBoxContainer3"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_pgrud")
+theme_override_font_sizes/font_size = 30
+text = "00"
+script = ExtResource("7_ym4ps")

@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var range: float = 100.0      # DistÃ¢ncia de ida e volta
 @export var direction: Vector2 = Vector2.RIGHT  # DireÃ§Ã£o inicial do movimento
 @export var life = 3
-
+var is_dying = false
 # VariÃ¡veis internas
 var start_position: Vector2
 var target_position: Vector2
@@ -39,7 +39,9 @@ func dmg():
 
 func die():
 	if life <= 0:
-		velocity.y = 100
+		var is_dying = true
+		velocity = direction * 10
+		velocity.y = 300
 		$AnimatedSprite2D.play("death")
 		await get_tree().create_timer(1.0).timeout	 
 		queue_free()
