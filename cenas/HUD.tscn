@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://ojmmlqheysg6"]
+
+[ext_resource type="Texture2D" uid="uid://yge2ymm2m1rs" path="res://assets/images/hearts.png" id="1_7sw1o"]
+[ext_resource type="Texture2D" uid="uid://bqgntiu56rejg" path="res://assets/GunsPack/Bullets/PistolAmmoBig.png" id="1_wv0gm"]
+[ext_resource type="FontFile" uid="uid://dp15nrw256jnd" path="res://fonts/BruceForeverRegular-X3jd2.ttf" id="2_pgrud"]
+[ext_resource type="Script" path="res://scripts/bullet_counter.gd" id="2_qh0uq"]
+[ext_resource type="Script" path="res://scripts/life_counter.gd" id="3_spy4l"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.069
+anchor_bottom = 0.062
+offset_left = 25.0
+offset_top = 21.0
+offset_right = 25.288
+offset_bottom = 20.824
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+texture = ExtResource("1_7sw1o")
+
+[node name="Label" type="Label" parent="Control/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_pgrud")
+theme_override_font_sizes/font_size = 30
+text = " 3"
+script = ExtResource("3_spy4l")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.954
+anchor_right = 1.0
+offset_left = -55.192
+offset_top = 23.0
+offset_right = -25.0
+offset_bottom = 58.0
+grow_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("1_wv0gm")
+
+[node name="Label" type="Label" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_pgrud")
+theme_override_font_sizes/font_size = 30
+text = " 1
+"
+horizontal_alignment = 2
+script = ExtResource("2_qh0uq")

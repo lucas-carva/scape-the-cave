@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-const grupo_inimigo = "inimigos"
-
 @export var SPEED = 100.0
 @export var direction := -1
 @export var life = 3
@@ -34,6 +32,7 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.flip_h = true
 
 	move_and_slide()
+	
 func dmg():
 	$AnimatedSprite2D.play("dmg")
 	await get_tree().create_timer(0.5).timeout	 

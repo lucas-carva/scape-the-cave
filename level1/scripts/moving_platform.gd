@@ -1,5 +1,5 @@
 extends Node2D
-const WAIT_DURATION := 0.5
+const WAIT_DURATION := 1.5
 
 @onready var platform := $platform as AnimatableBody2D
 @export var move_speed := 3.0

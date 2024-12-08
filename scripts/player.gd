@@ -7,7 +7,7 @@ var last_direction : int
 @onready var muzzle : Marker2D = $Muzzle
 @export var tiros = 20
 const SPEED = 200.0
-const JUMP_VELOCITY = -320.0
+const JUMP_VELOCITY = -350.0
 const RUN_BOOST = 1.4
 
 var is_dying = false
@@ -16,7 +16,7 @@ var is_shooting = false
 var start_position: Vector2  # Posição inicial do personagem
 
 # Enum para os estados de animação
-enum State { IDLE, WALK, RUN, JUMP, DEATH, SHOOT, RUN_SHOOT }
+enum State { IDLE, WALK, RUN, JUMP, DEATH, SHOOT, RUN_SHOOT, DMG}
 var current_state := State.IDLE
 
 func _ready() -> void:
@@ -29,6 +29,11 @@ func _physics_process(delta: float) -> void:
 
 	if is_dying or is_shooting:
 		return
+	'''
+	if Global.life == 0:
+		death()
+	'''
+	
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -68,8 +73,9 @@ func _physics_process(delta: float) -> void:
 		last_direction = direction
 		
 	# Verificar se o personagem está atirando
-	if Input.is_action_just_pressed("shoot") and tiros > 0 and not is_shooting:
-		tiros -= 1
+	if Input.is_action_just_pressed("shoot") and Global.tiros > 0 and not is_shooting:
+		Global.tiros -= 1
+		print(Global.tiros)
 		momento_tiro.position = muzzle.global_position
 		momento_tiro.direction = last_direction
 		get_parent().add_child(momento_tiro)
@@ -117,6 +123,8 @@ func play_animation():
 			$AnimatedSprite2D.play("shoot")
 		State.RUN_SHOOT:
 			$AnimatedSprite2D.play("run_shoot")
+		State.DMG:
+			$AnimatedSprite2D.play("dmg")
 # Função de morte
 func death():
 	is_dying = true
@@ -134,14 +142,24 @@ func death():
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
+		Global.life -= 1
+		#current_state = State.DMG
 		death()
-
+		
 func _on_spikes_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
+		Global.life -= 1
 		death()
 
 func _on_key_hitbox_body_entered(body: Node2D) -> void:
 	$key.set_vi
 	Global.key = true
 	print("foi")
+	pass # Replace with function body.
+
+
+func _on_hitbox_bat_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		Global.life -= 1
+		death()
 	pass # Replace with function body.

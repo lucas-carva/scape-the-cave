@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cd7bs6uowdsi2"]
 
-[ext_resource type="Script" path="res://scripts/moving_platform.gd" id="1_f5wsl"]
+[ext_resource type="Script" path="res://level1/scripts/moving_platform.gd" id="1_f5wsl"]
 [ext_resource type="Texture2D" uid="uid://b1adtspf2uehb" path="res://assets/PixelFantasy_Caves_1.0/mainlev_build.png" id="2_rdxuu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjs5q"]
@@ -8,6 +8,7 @@ size = Vector2(57, 16)
 
 [node name="moving_platform" type="Node2D"]
 script = ExtResource("1_f5wsl")
+move_speed = 2.0
 
 [node name="platform" type="AnimatableBody2D" parent="."]
 

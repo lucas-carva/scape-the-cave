@@ -17,7 +17,20 @@ func _on_timer_timeout() -> void:
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
+	if body.is_in_group("morcegos"):
+		print("bat")
+		# Verifica o nó pai e se ele tem o método "dmg"
+		var bat = body
+		if bat:
+			bat.life -=1
+			if bat.life > 0:
+				bat.dmg()
+			bat.die()
+		else:
+			print("O nó pai não possui o método 'dmg'")
+	print("body")
 	queue_free()
+
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("slimes"):
@@ -29,6 +42,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 			if slime.life > 0:
 				slime.dmg()
 			slime.die()
+			
 		
 	# Remove o próprio objeto que possui o hitbox
 	print("area")
