@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cd7bs6uowdsi2" path="res://level1/cenas/moving_platform.tscn" id="17_ytm61"]
 [ext_resource type="PackedScene" uid="uid://cpcd3qp4t4uug" path="res://level2/cenas/coin.tscn" id="18_k7aai"]
 [ext_resource type="PackedScene" uid="uid://da8qjsrn6y3nv" path="res://cenas/key.tscn" id="18_sdubl"]
-[ext_resource type="FontFile" uid="uid://dp15nrw256jnd" path="res://fonts/BruceForeverRegular-X3jd2.ttf" id="19_gvh3o"]
+[ext_resource type="FontFile" uid="uid://dp15nrw256jnd" path="res://assets/fonts/BruceForeverRegular-X3jd2.ttf" id="19_gvh3o"]
 [ext_resource type="Texture2D" uid="uid://dslhjanpm422y" path="res://assets/Cursed_Character_Pack_COMPLETE/Pistol/crouch-p.png" id="20_8o1gn"]
 [ext_resource type="Texture2D" uid="uid://duo582ngcjkji" path="res://assets/Cursed_Character_Pack_COMPLETE/Pistol/aim-p.png" id="21_2xqyf"]
 [ext_resource type="Texture2D" uid="uid://dfhhf7q2o32n0" path="res://assets/images/setas-removebg-preview.png" id="22_7k23x"]
@@ -30,7 +30,7 @@ tile_data = PackedInt32Array(0, 1638400, 11, 65536, 1638400, 12, 1, 1703936, 11,
 [sub_resource type="TileMapPattern" id="TileMapPattern_vlwjo"]
 tile_data = PackedInt32Array(0, 851968, 39, 65536, 851968, 40, 131072, 851968, 41, 1, 917504, 39, 65537, 917504, 40, 131073, 917504, 41, 2, 1048576, 39, 65538, 1048576, 40, 131074, 1048576, 41, 3, 1114112, 39, 65539, 1114112, 40, 131075, 1114112, 41, 4, 1245184, 39, 65540, 1245184, 40, 131076, 1245184, 41, 5, 1376256, 39, 65541, 1376256, 40, 131077, 1376256, 41, 6, 720896, 39, 65542, 720896, 40, 131078, 720896, 41)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_flf7s"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5mmkj"]
 texture = ExtResource("1_4bkgc")
 20:1/0 = 0
 20:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -1647,7 +1647,7 @@ texture = ExtResource("1_4bkgc")
 
 [sub_resource type="TileSet" id="TileSet_a5o71"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_flf7s")
+sources/0 = SubResource("TileSetAtlasSource_5mmkj")
 pattern_0 = SubResource("TileMapPattern_u5aes")
 pattern_1 = SubResource("TileMapPattern_vlwjo")
 
@@ -2231,75 +2231,57 @@ position = Vector2(59.2857, 361.429)
 
 [node name="coin2" parent="coins" instance=ExtResource("18_k7aai")]
 position = Vector2(127.857, 362.143)
-scale = Vector2(1, 1)
 
 [node name="coin3" parent="coins" instance=ExtResource("18_k7aai")]
 position = Vector2(190, 362.143)
-scale = Vector2(1, 1)
 
 [node name="coin4" parent="coins" instance=ExtResource("18_k7aai")]
 position = Vector2(467.143, 364.286)
-scale = Vector2(1, 1)
 
 [node name="coin5" parent="coins" instance=ExtResource("18_k7aai")]
 position = Vector2(509.286, 365.714)
-scale = Vector2(1, 1)
 
 [node name="coin6" parent="coins" instance=ExtResource("18_k7aai")]
 position = Vector2(707.143, 364.286)
-scale = Vector2(1, 1)
 
 [node name="coin7" parent="coins" instance=ExtResource("18_k7aai")]
 position = Vector2(756.429, 365.714)
-scale = Vector2(1, 1)
 
 [node name="coin8" parent="coins" instance=ExtResource("18_k7aai")]
 position = Vector2(811.429, 364.286)
-scale = Vector2(1, 1)
 
 [node name="coin9" parent="coins" instance=ExtResource("18_k7aai")]
 position = Vector2(1282.14, 170)
-scale = Vector2(1, 1)
 
 [node name="coin16" parent="coins" instance=ExtResource("18_k7aai")]
 position = Vector2(1382.14, 136)
-scale = Vector2(1, 1)
 
 [node name="coin17" parent="coins" instance=ExtResource("18_k7aai")]
 position = Vector2(1139.29, 170)
-scale = Vector2(1, 1)
 
 [node name="coin18" parent="coins" instance=ExtResource("18_k7aai")]
 position = Vector2(1012.86, 136)
-scale = Vector2(1, 1)
 
 [node name="coin19" parent="coins" instance=ExtResource("18_k7aai")]
 position = Vector2(1206.43, 135.714)
-scale = Vector2(1, 1)
 
 [node name="coin10" parent="coins" instance=ExtResource("18_k7aai")]
 position = Vector2(1772.14, 169.286)
-scale = Vector2(1, 1)
 
 [node name="coin11" parent="coins" instance=ExtResource("18_k7aai")]
 position = Vector2(1812.86, 169.286)
-scale = Vector2(1, 1)
 
 [node name="coin12" parent="coins" instance=ExtResource("18_k7aai")]
 position = Vector2(1851.43, 168.571)
-scale = Vector2(1, 1)
 
 [node name="coin13" parent="coins" instance=ExtResource("18_k7aai")]
 position = Vector2(1891.43, 413.571)
-scale = Vector2(1, 1)
 
 [node name="coin14" parent="coins" instance=ExtResource("18_k7aai")]
 position = Vector2(1921.43, 414.286)
-scale = Vector2(1, 1)
 
 [node name="coin15" parent="coins" instance=ExtResource("18_k7aai")]
 position = Vector2(1950, 413.571)
-scale = Vector2(1, 1)
 
 [node name="key" type="Node2D" parent="."]
 position = Vector2(-49, 1)

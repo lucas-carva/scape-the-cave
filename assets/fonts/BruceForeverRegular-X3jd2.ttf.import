@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dp15nrw256jnd"
-path="res://.godot/imported/BruceForeverRegular-X3jd2.ttf-3c8445a676d136168b05ae449085aceb.fontdata"
+path="res://.godot/imported/BruceForeverRegular-X3jd2.ttf-22c3ed8b4d054cee34f50d304faef438.fontdata"
 
 [deps]
 
-source_file="res://fonts/BruceForeverRegular-X3jd2.ttf"
-dest_files=["res://.godot/imported/BruceForeverRegular-X3jd2.ttf-3c8445a676d136168b05ae449085aceb.fontdata"]
+source_file="res://assets/fonts/BruceForeverRegular-X3jd2.ttf"
+dest_files=["res://.godot/imported/BruceForeverRegular-X3jd2.ttf-22c3ed8b4d054cee34f50d304faef438.fontdata"]
 
 [params]
 

@@ -1,16 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1nen40727g4g"]
+[gd_scene load_steps=8 format=3 uid="uid://d1nen40727g4g"]
 
-[ext_resource type="Texture2D" uid="uid://k17nxhtb2fbo" path="res://assets/GunsPack/Bullets/PistolAmmoSmall.png" id="1_jrfst"]
 [ext_resource type="Script" path="res://scripts/tiro.gd" id="1_lvv3x"]
+[ext_resource type="Texture2D" uid="uid://bqgntiu56rejg" path="res://assets/GunsPack/Bullets/PistolAmmoBig.png" id="1_s575n"]
+[ext_resource type="Texture2D" uid="uid://d0c68na30jre" path="res://assets/GunsPack/Bullets/RifleAmmoBig.png" id="2_rd6xu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6teli"]
+atlas = ExtResource("1_s575n")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2fsu"]
+atlas = ExtResource("2_rd6xu")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_phc4v"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_jrfst")
+"texture": SubResource("AtlasTexture_6teli")
 }],
 "loop": true,
-"name": &"default",
+"name": &"pistol",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2fsu")
+}],
+"loop": true,
+"name": &"rifle",
 "speed": 5.0
 }]
 
@@ -20,6 +37,7 @@ size = Vector2(6, 4)
 [node name="tiro" type="AnimatedSprite2D"]
 position = Vector2(1, -5.72205e-06)
 sprite_frames = SubResource("SpriteFrames_phc4v")
+animation = &"pistol"
 script = ExtResource("1_lvv3x")
 
 [node name="Timer" type="Timer" parent="."]

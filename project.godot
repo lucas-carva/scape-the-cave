@@ -29,6 +29,7 @@ mouse_cursor/size/mode=0
 player=""
 slimes=""
 morcegos=""
+demon=""
 
 [input]
 

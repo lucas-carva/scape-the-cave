@@ -28,6 +28,18 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 			bat.die()
 		else:
 			print("O nó pai não possui o método 'dmg'")
+	
+	if body.is_in_group("demon"):
+		print("deabo")
+		# Verifica o nó pai e se ele tem o método "dmg"
+		var demon = body
+		if demon:
+			demon.life -=1
+			if demon.life > 0:
+				demon.dmg()
+			demon.die()
+		else:
+			print("O nó pai não possui o método 'dmg'")
 	print("body")
 	queue_free()
 

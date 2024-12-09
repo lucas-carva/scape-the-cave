@@ -53,9 +53,9 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = direction * SPEED
-		if Input.is_action_pressed("run") and is_on_floor():
+		if Input.is_action_pressed("run"):
 			velocity.x = direction * SPEED * RUN_BOOST
-			if current_state != State.RUN:
+			if current_state != State.RUN and is_on_floor():
 				current_state = State.RUN
 				play_animation()
 		else:

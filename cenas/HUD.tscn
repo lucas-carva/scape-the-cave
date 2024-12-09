@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://ojmmlqheysg6"]
 
 [ext_resource type="Texture2D" uid="uid://yge2ymm2m1rs" path="res://assets/images/hearts.png" id="1_7sw1o"]
-[ext_resource type="Texture2D" uid="uid://bqgntiu56rejg" path="res://assets/GunsPack/Bullets/PistolAmmoBig.png" id="1_wv0gm"]
-[ext_resource type="FontFile" uid="uid://dp15nrw256jnd" path="res://fonts/BruceForeverRegular-X3jd2.ttf" id="2_pgrud"]
+[ext_resource type="Texture2D" path="res://assets/GunsPack/Bullets/PistolAmmoBig.png" id="1_wv0gm"]
+[ext_resource type="FontFile" uid="uid://dp15nrw256jnd" path="res://assets/fonts/BruceForeverRegular-X3jd2.ttf" id="2_pgrud"]
 [ext_resource type="Script" path="res://scripts/bullet_counter.gd" id="2_qh0uq"]
 [ext_resource type="Script" path="res://scripts/life_counter.gd" id="3_spy4l"]
 [ext_resource type="Texture2D" uid="uid://cp8fejtrfhg66" path="res://level2/assets/coin_image.png" id="6_5dkoc"]
