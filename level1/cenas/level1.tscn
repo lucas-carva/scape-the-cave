@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://mcfhg728nb51"]
+[gd_scene load_steps=90 format=3 uid="uid://mcfhg728nb51"]
 
 [ext_resource type="Texture2D" uid="uid://b1adtspf2uehb" path="res://assets/PixelFantasy_Caves_1.0/mainlev_build.png" id="1_4bkgc"]
 [ext_resource type="PackedScene" uid="uid://ojmmlqheysg6" path="res://cenas/HUD.tscn" id="2_x2okh"]
@@ -23,6 +23,10 @@
 [ext_resource type="Texture2D" uid="uid://dslhjanpm422y" path="res://assets/Cursed_Character_Pack_COMPLETE/Pistol/crouch-p.png" id="20_8o1gn"]
 [ext_resource type="Texture2D" uid="uid://duo582ngcjkji" path="res://assets/Cursed_Character_Pack_COMPLETE/Pistol/aim-p.png" id="21_2xqyf"]
 [ext_resource type="Texture2D" uid="uid://dfhhf7q2o32n0" path="res://assets/images/setas-removebg-preview.png" id="22_7k23x"]
+[ext_resource type="Shader" path="res://shaders/transition.gdshader" id="25_fq83q"]
+[ext_resource type="Script" path="res://scripts/transition.gd" id="25_vdehi"]
+[ext_resource type="Script" path="res://scripts/color_rect.gd" id="26_0tmv5"]
+[ext_resource type="PackedScene" uid="uid://bvprwuvwpmosv" path="res://cenas/goal.tscn" id="27_8lkm6"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_u5aes"]
 tile_data = PackedInt32Array(0, 1638400, 11, 65536, 1638400, 12, 1, 1703936, 11, 65537, 1703936, 12, 2, 1572864, 23, 65538, 1572864, 24, 3, 1638400, 23, 65539, 1638400, 24, 4, 1376256, 23, 65540, 1376256, 24, 5, 1441792, 23, 65541, 1441792, 24, 6, 1769472, 23, 65542, 1769472, 24, 7, 1835008, 23, 65543, 1835008, 24, 8, 917504, 23, 65544, 917504, 24, 9, 983040, 23, 65545, 983040, 24, 10, 1245184, 23, 65546, 1245184, 24, 11, 1114112, 23, 65547, 1114112, 24)
@@ -1992,7 +1996,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_80bkj")
 }],
-"loop": true,
+"loop": false,
 "name": &"run_shoot",
 "speed": 5.0
 }, {
@@ -2056,6 +2060,16 @@ size = Vector2(93.75, 37)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_giyfv"]
 size = Vector2(13.125, 11.875)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kk7nr"]
+shader = ExtResource("25_fq83q")
+shader_parameter/lines = 10.0
+shader_parameter/threshold = 0.0
+shader_parameter/line_color_a = Color(1, 1, 1, 1)
+shader_parameter/line_color_b = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwlyu"]
+size = Vector2(40, 57)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="level" type="TileMap" parent="."]
@@ -2115,7 +2129,7 @@ script = ExtResource("7_5xrl5")
 position = Vector2(-114.4, 499.6)
 scale = Vector2(1.8, 1.8)
 sprite_frames = SubResource("SpriteFrames_t83y5")
-animation = &"dmg"
+animation = &"run_shoot"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
@@ -2351,6 +2365,27 @@ offset_right = 103.0
 offset_bottom = 35.0
 texture = ExtResource("22_7k23x")
 expand_mode = 2
+
+[node name="transition" type="CanvasLayer" parent="."]
+script = ExtResource("25_vdehi")
+
+[node name="ColorRect" type="ColorRect" parent="transition"]
+material = SubResource("ShaderMaterial_kk7nr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("26_0tmv5")
+
+[node name="goal" parent="." instance=ExtResource("27_8lkm6")]
+position = Vector2(-180, 460)
+next_level = "res://level2/cenas/level2.tscn"
+
+[node name="collision" type="CollisionShape2D" parent="goal"]
+position = Vector2(10, 18.5)
+shape = SubResource("RectangleShape2D_nwlyu")
 
 [connection signal="body_entered" from="slimes/slime/hitbox" to="player" method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="slimes/slime2/hitbox" to="player" method="_on_hitbox_body_entered"]

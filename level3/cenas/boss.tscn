@@ -1,7 +1,8 @@
-[gd_scene load_steps=31 format=3 uid="uid://briv5xqhd13bx"]
+[gd_scene load_steps=33 format=3 uid="uid://briv5xqhd13bx"]
 
-[ext_resource type="Script" path="res://level3/demon.gd" id="1_tklcl"]
+[ext_resource type="Script" path="res://level3/scripts/demon.gd" id="1_tklcl"]
 [ext_resource type="Texture2D" uid="uid://0onxwmn3cbg4" path="res://assets/Flying Demon 2D Pixel Art/Sprites/with_outline/ATTACK.png" id="1_uq5fe"]
+[ext_resource type="PackedScene" uid="uid://hwxsuvj37a0u" path="res://level3/cenas/fireball.tscn" id="2_5h1jm"]
 [ext_resource type="Texture2D" uid="uid://cb4x1r8pr1h35" path="res://assets/Flying Demon 2D Pixel Art/Sprites/with_outline/DEATH.png" id="2_dq6k3"]
 [ext_resource type="Texture2D" uid="uid://dredonsen4qtb" path="res://assets/Flying Demon 2D Pixel Art/Sprites/with_outline/HURT.png" id="4_irlld"]
 [ext_resource type="Texture2D" uid="uid://bukfyy7dbheh0" path="res://assets/Flying Demon 2D Pixel Art/Sprites/with_outline/IDLE.png" id="4_xlbeo"]
@@ -151,7 +152,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c2g3v")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 6.0
 }, {
@@ -193,15 +194,35 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_sq71f"]
 radius = 33.0606
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kjpll"]
+radius = 173.003
+
 [node name="boss" type="Node2D"]
 
 [node name="demon" type="CharacterBody2D" parent="." groups=["demon"]]
 script = ExtResource("1_tklcl")
+ammo = ExtResource("2_5h1jm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="demon"]
 sprite_frames = SubResource("SpriteFrames_84g23")
-animation = &"death"
+animation = &"attack"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="demon"]
 shape = SubResource("CircleShape2D_sq71f")
+
+[node name="player_radar" type="Area2D" parent="demon"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="demon/player_radar"]
+shape = SubResource("CircleShape2D_kjpll")
+debug_color = Color(0.960784, 0, 0, 0.419608)
+
+[node name="MuzzleDemon" type="Marker2D" parent="demon"]
+position = Vector2(-12.2222, 9.44444)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+
+[connection signal="body_entered" from="demon/player_radar" to="demon" method="_on_player_radar_body_entered"]

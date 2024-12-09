@@ -32,7 +32,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4pa2"]
-size = Vector2(6, 4)
+size = Vector2(14, 6)
 
 [node name="tiro" type="AnimatedSprite2D"]
 position = Vector2(1, -5.72205e-06)

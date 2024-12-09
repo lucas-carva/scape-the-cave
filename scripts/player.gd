@@ -12,6 +12,7 @@ const RUN_BOOST = 1.4
 
 var is_dying = false
 var is_shooting = false
+var is_running = false
 
 var start_position: Vector2  # Posição inicial do personagem
 
@@ -21,6 +22,7 @@ var current_state := State.IDLE
 
 func _ready() -> void:
 	start_position = position  # Salva a posição inicial do personagem
+	Global.key = false
 	play_animation()
 
 func _physics_process(delta: float) -> void:
@@ -54,11 +56,13 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction * SPEED
 		if Input.is_action_pressed("run"):
+			is_running = true
 			velocity.x = direction * SPEED * RUN_BOOST
 			if current_state != State.RUN and is_on_floor():
 				current_state = State.RUN
 				play_animation()
 		else:
+			is_running = false
 			if is_on_floor() and current_state != State.WALK:
 				current_state = State.WALK
 				play_animation()
@@ -75,16 +79,14 @@ func _physics_process(delta: float) -> void:
 	# Verificar se o personagem está atirando
 	if Input.is_action_just_pressed("shoot") and Global.tiros > 0 and not is_shooting:
 		Global.tiros -= 1
-		print(Global.tiros)
 		momento_tiro.position = muzzle.global_position
 		momento_tiro.direction = last_direction
 		get_parent().add_child(momento_tiro)
-		
+
 		# Bloquear outros estados enquanto atirando
 		is_shooting = true
 		current_state = State.SHOOT
 		play_animation()
-		
 		# Aguardar a animação terminar e desbloquear
 		await $AnimatedSprite2D.animation_finished
 		is_shooting = false

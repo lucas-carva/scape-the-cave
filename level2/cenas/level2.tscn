@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://ftsoup3n5c3q"]
+[gd_scene load_steps=84 format=3 uid="uid://ftsoup3n5c3q"]
 
 [ext_resource type="PackedScene" uid="uid://ojmmlqheysg6" path="res://cenas/HUD.tscn" id="1_kmk5a"]
 [ext_resource type="Texture2D" uid="uid://b1adtspf2uehb" path="res://assets/PixelFantasy_Caves_1.0/mainlev_build.png" id="2_dtvud"]
@@ -19,6 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://c00f6mk4anqyr" path="res://assets/Cursed_Character_Pack_COMPLETE/Pistol/shoot-p.png" id="16_k37cq"]
 [ext_resource type="Texture2D" uid="uid://d2hkqxlbodupj" path="res://assets/Cursed_Character_Pack_COMPLETE/Pistol/walk-p.png" id="17_0v2hj"]
 [ext_resource type="PackedScene" uid="uid://da8qjsrn6y3nv" path="res://cenas/key.tscn" id="17_j4ya2"]
+[ext_resource type="PackedScene" uid="uid://bvprwuvwpmosv" path="res://cenas/goal.tscn" id="20_qhdv2"]
+[ext_resource type="Script" path="res://scripts/transition.gd" id="20_tpoqp"]
+[ext_resource type="Shader" path="res://shaders/transition.gdshader" id="21_ms7w7"]
+[ext_resource type="Script" path="res://scripts/color_rect.gd" id="22_s1lbn"]
 
 [sub_resource type="GDScript" id="GDScript_xo61y"]
 
@@ -2265,6 +2269,16 @@ size = Vector2(352.688, 21)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hg6oe"]
 size = Vector2(113, 14.75)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cgig1"]
+shader = ExtResource("21_ms7w7")
+shader_parameter/lines = 10.0
+shader_parameter/threshold = 0.0
+shader_parameter/line_color_a = Color(1, 1, 1, 1)
+shader_parameter/line_color_b = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0vja"]
+size = Vector2(38, 56)
+
 [node name="World" type="Node2D"]
 script = SubResource("GDScript_xo61y")
 
@@ -2476,6 +2490,27 @@ shape = SubResource("RectangleShape2D_q3nvj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spikes"]
 position = Vector2(312, 421)
 shape = SubResource("RectangleShape2D_hg6oe")
+
+[node name="transition" type="CanvasLayer" parent="."]
+script = ExtResource("20_tpoqp")
+
+[node name="ColorRect" type="ColorRect" parent="transition"]
+material = SubResource("ShaderMaterial_cgig1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("22_s1lbn")
+
+[node name="goal" parent="." instance=ExtResource("20_qhdv2")]
+position = Vector2(1770, 80)
+next_level = "res://level3/cenas/level_3.tscn"
+
+[node name="collision" type="CollisionShape2D" parent="goal"]
+position = Vector2(14, 18)
+shape = SubResource("RectangleShape2D_h0vja")
 
 [connection signal="body_entered" from="bats/enemy/hitbox2" to="player" method="_on_hitbox_bat_body_entered"]
 [connection signal="body_entered" from="bats/enemy2/hitbox2" to="player" method="_on_hitbox_bat_body_entered"]
