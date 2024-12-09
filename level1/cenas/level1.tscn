@@ -2380,7 +2380,7 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("26_0tmv5")
 
 [node name="goal" parent="." instance=ExtResource("27_8lkm6")]
-position = Vector2(-180, 460)
+position = Vector2(2569, 545)
 next_level = "res://level2/cenas/level2.tscn"
 
 [node name="collision" type="CollisionShape2D" parent="goal"]

@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var speed: float = 100.0       # Velocidade do inimigo
 @export var range: float = 300.0      # Distância de ida e volta
 @export var direction: Vector2 = Vector2.RIGHT  # Direção inicial do movimento
-@export var life = 50
+@export var life = 15
 @export var fire_rate: float = 1    # Intervalo entre disparos (em segundos)
 var is_dying = false
 var fireball = preload("res://level3/cenas/fireball.tscn")

@@ -166,3 +166,11 @@ func _on_hitbox_bat_body_entered(body: Node2D) -> void:
 		Global.life -= 1
 		death()
 	pass # Replace with function body.
+
+
+func _on_spikes_level3_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		Global.life -= 1
+		#current_state = State.DMG
+		death()
+	pass # Replace with function body.
