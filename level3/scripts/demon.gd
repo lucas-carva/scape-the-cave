@@ -50,7 +50,7 @@ func _aim():
 	if player:
 		ray_cast.target_position = to_local(player.position)
 	else:
-		print("Player node not found!")
+		print("")
 		
 func _check_player_collision():
 	pass
@@ -66,7 +66,7 @@ func die():
 		velocity = direction * 10
 		velocity.y = 300
 		$AnimatedSprite2D.play("death")
-		await get_tree().create_timer(1.5).timeout	 
+		await get_tree().create_timer(1.0).timeout	 
 		queue_free()
 		
 func _on_player_radar_body_entered(body: Node2D) -> void:

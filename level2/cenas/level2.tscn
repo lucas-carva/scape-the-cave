@@ -2476,6 +2476,7 @@ shape = SubResource("CapsuleShape2D_l3h0a")
 position = Vector2(7, 338)
 limit_left = -300
 limit_top = -150
+limit_right = 2000
 limit_bottom = 10
 
 [node name="Muzzle" type="Marker2D" parent="player"]

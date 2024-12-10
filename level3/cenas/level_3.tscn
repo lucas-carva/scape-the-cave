@@ -2357,14 +2357,15 @@ limit_bottom = -30
 position = Vector2(-78, 509)
 
 [node name="demon" type="CharacterBody2D" parent="." groups=["demon"]]
-position = Vector2(237, 180)
+position = Vector2(338, 190)
 scale = Vector2(1.8, 1.8)
 script = ExtResource("18_2dk25")
+range = 220.0
 ammo = ExtResource("19_pmrtc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="demon"]
 sprite_frames = SubResource("SpriteFrames_0654f")
-animation = &"attack"
+animation = &"death"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="demon"]
