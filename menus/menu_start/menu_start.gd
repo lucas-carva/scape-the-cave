@@ -12,8 +12,7 @@ func _process(delta: float) -> void:
 
 
 func _on_novo_jogo_btn_pressed() -> void:
-	get_tree().change_scene_to_file("res://level1/cenas/level1.tscn")
-
+	get_tree().change_scene_to_file("res://levels/level1/cenas/level1.tscn")
 
 func _on_sair_btn_pressed() -> void:
 	get_tree().quit()

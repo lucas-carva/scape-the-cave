@@ -1,8 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyn6us064aomo"]
+[gd_scene load_steps=8 format=3 uid="uid://cyn6us064aomo"]
 
+[ext_resource type="FontFile" uid="uid://c0vcxfpcvufmn" path="res://themes/fonts/architect-s-daughter/ArchitectsDaughter.ttf" id="1_olw6s"]
 [ext_resource type="Script" path="res://menus/menu_start/menu_start.gd" id="1_oqatv"]
+[ext_resource type="FontFile" uid="uid://c0bgprrman4p6" path="res://themes/fonts/kirifont/KiriFont.otf" id="2_yp36w"]
 
-[sub_resource type="Theme" id="Theme_5opc6"]
+[sub_resource type="Theme" id="Theme_ml5ax"]
+default_font = ExtResource("1_olw6s")
+
+[sub_resource type="Theme" id="Theme_3rmyu"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_veage"]
+
+[sub_resource type="Theme" id="Theme_ni7fg"]
+default_font = ExtResource("2_yp36w")
+default_font_size = 50
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -11,6 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_ml5ax")
 script = ExtResource("1_oqatv")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -34,8 +46,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="NovoJogoBtn" type="Button" parent="VBoxContainer"]
+modulate = Color(0.953041, 0.95304, 0.953041, 1)
+self_modulate = Color(0.958173, 0.99101, 0.986329, 1)
 layout_mode = 2
+theme = SubResource("Theme_3rmyu")
+theme_override_colors/icon_hover_color = Color(0.0691903, 0.0246639, 0.000698167, 1)
 text = "NOVO JOGO"
+icon = SubResource("CanvasTexture_veage")
 
 [node name="OpcoesBtn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -48,11 +65,11 @@ text = "SAIR"
 [node name="Title" type="Label" parent="."]
 modulate = Color(0.0701524, 0.0701524, 0.0701524, 1)
 layout_mode = 0
-offset_left = 178.0
-offset_top = 64.0
-offset_right = 416.0
-offset_bottom = 139.0
-theme = SubResource("Theme_5opc6")
+offset_left = 7.0
+offset_top = 52.0
+offset_right = 646.0
+offset_bottom = 127.0
+theme = SubResource("Theme_ni7fg")
 text = "Scape the Cave"
 horizontal_alignment = 1
 vertical_alignment = 1
