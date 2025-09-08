@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://dp15nrw256jnd" path="res://assets/fonts/BruceForeverRegular-X3jd2.ttf" id="2_pgrud"]
 [ext_resource type="Script" path="res://scripts/bullet_counter.gd" id="2_qh0uq"]
 [ext_resource type="Script" path="res://scripts/life_counter.gd" id="3_spy4l"]
-[ext_resource type="Texture2D" uid="uid://cp8fejtrfhg66" path="res://level2/assets/coin_image.png" id="6_5dkoc"]
+[ext_resource type="Texture2D" uid="uid://cp8fejtrfhg66" path="res://levels/level2/assets/coin_image.png" id="6_5dkoc"]
 [ext_resource type="Script" path="res://scripts/coins_counter.gd" id="7_ym4ps"]
 
 [node name="HUD" type="CanvasLayer"]

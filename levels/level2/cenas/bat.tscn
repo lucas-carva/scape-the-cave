@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://qyyovs7e4wrg"]
 
-[ext_resource type="Script" path="res://level2/scripts/bat.gd" id="1_koo4s"]
-[ext_resource type="Texture2D" uid="uid://dqvec3idyq8yl" path="res://level2/assets/Bat_Sprite_Sheet.png" id="2_h6pxa"]
+[ext_resource type="Script" path="res://levels/level2/scripts/bat.gd" id="1_koo4s"]
+[ext_resource type="Texture2D" uid="uid://dqvec3idyq8yl" path="res://levels/level2/assets/Bat_Sprite_Sheet.png" id="2_h6pxa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hrfmk"]
 atlas = ExtResource("2_h6pxa")

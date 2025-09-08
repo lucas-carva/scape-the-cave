@@ -2129,7 +2129,7 @@ script = ExtResource("7_5xrl5")
 position = Vector2(-114.4, 499.6)
 scale = Vector2(1.8, 1.8)
 sprite_frames = SubResource("SpriteFrames_t83y5")
-animation = &"run_shoot"
+animation = &"shoot"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]

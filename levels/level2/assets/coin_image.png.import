@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqvec3idyq8yl"
-path="res://.godot/imported/Bat_Sprite_Sheet.png-3afb4e715fe1ee42e68c0f0775609086.ctex"
+uid="uid://cp8fejtrfhg66"
+path="res://.godot/imported/coin_image.png-96381b274a1dbcf1fe4c95f5575e2638.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level2/assets/Bat_Sprite_Sheet.png"
-dest_files=["res://.godot/imported/Bat_Sprite_Sheet.png-3afb4e715fe1ee42e68c0f0775609086.ctex"]
+source_file="res://levels/level2/assets/coin_image.png"
+dest_files=["res://.godot/imported/coin_image.png-96381b274a1dbcf1fe4c95f5575e2638.ctex"]
 
 [params]
 

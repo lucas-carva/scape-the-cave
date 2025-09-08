@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://hwxsuvj37a0u"]
 
 [ext_resource type="Texture2D" uid="uid://bl6hbm5vyrgys" path="res://assets/fireball/FB500-1.png" id="1_tkres"]
-[ext_resource type="Script" path="res://level3/scripts/fireball.gd" id="2_bt7d2"]
+[ext_resource type="Script" path="res://levels/level3/scripts/fireball.gd" id="2_bt7d2"]
 [ext_resource type="Texture2D" uid="uid://80c6b57fep3w" path="res://assets/fireball/FB500-2.png" id="2_y8xli"]
 [ext_resource type="Texture2D" uid="uid://bhdsyafwffcwr" path="res://assets/fireball/FB500-3.png" id="3_p0y70"]
 [ext_resource type="Texture2D" uid="uid://cnyot4rf0wws5" path="res://assets/fireball/FB500-4.png" id="4_aipbs"]
